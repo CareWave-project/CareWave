@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Medicine Name -->
+    <TextView
+        android:id="@+id/textMedicineName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Medicine Name:"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Display retrieved medicine name -->
+    <TextView
+        android:id="@+id/textViewMedicineName"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:textSize="16sp" />
+
+    <!-- Dose -->
+    <TextView
+        android:id="@+id/textDose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dose:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+    <!-- Display retrieved dose -->
+    <TextView
+        android:id="@+id/textViewDose"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:textSize="16sp" />
+
+    <!-- Time -->
+    <TextView
+        android:id="@+id/textTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+    <!-- Display retrieved time -->
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:textSize="16sp" />
+
+</LinearLayout>
