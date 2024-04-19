@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CareWave1</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="card_icon">Card Icon</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="spo2">SpO2</string>
+    <string name="sign_up_here">Don\'t have an account? Sign up here.</string>
+    <string name="already_registered_sign_in">Already registered, Sign in !</string>
+    <string name="login">Login</string>
+    <string name="medicines_list">Medicines List</string>
+</resources>

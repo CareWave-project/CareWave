@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "695912518781",
+    "project_id": "carewave1-2e995",
+    "storage_bucket": "carewave1-2e995.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695912518781:android:d9526afdff92f09ddfcd14",
+        "android_client_info": {
+          "package_name": "com.example.carewave1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCB1-JI-59CVAsnemUw0YFtsIG8jSek9w4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Toolbar -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/toolbar_bg"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <!-- Centered LinearLayout for items -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="">
+
+                    <!-- Back Icon -->
+                    <ImageView
+                        android:id="@+id/icon_back_arrow"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:src="@drawable/icon_back_arrow" />
+
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Medicine Name -->
+        <TextView
+            android:id="@+id/textMedicineName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Medicine Name:"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Display retrieved medicine name -->
+        <TextView
+            android:id="@+id/textViewMedicineName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textSize="16sp" />
+
+        <!-- Dose -->
+        <TextView
+            android:id="@+id/textDose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Dose:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <!-- Display retrieved dose -->
+        <TextView
+            android:id="@+id/textViewDose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textSize="16sp" />
+
+        <!-- Time -->
+        <TextView
+            android:id="@+id/textTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Time:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <!-- Display retrieved time -->
+        <TextView
+            android:id="@+id/textViewTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textSize="16sp" />
+
+        <!-- Navigation Bar -->
+        <!-- <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:menu="@menu/bottom_nav_menu" /> -->
+
+    </LinearLayout>
+</ScrollView>
