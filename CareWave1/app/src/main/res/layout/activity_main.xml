@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EDEAEA"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="25dp"
+        tools:ignore="UselessParent">
+
+        <!-- App Name -->
+
+        <!-- Login Text -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="CareWave"
+            android:textColor="#3168C8"
+            android:textSize="35sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:text="Login"
+            android:textColor="#3168C8"
+            android:textSize="35sp" />
+
+        <!-- UserName EditText -->
+        <EditText
+            android:id="@+id/et_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:hint="UserName"
+            android:textAlignment="center"
+            android:textColor="#6bfff7"
+            android:textColorHint="#37837F"
+            android:importantForAutofill="no"
+            android:inputType="" />
+
+        <!-- Password EditText -->
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textColor="#6bfff7"
+            android:textColorHint="#37837F"
+            android:importantForAutofill="no" />
+
+        <!-- Button layout for Reset, Submit -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:padding="25dp">
+
+            <!-- Reset Button -->
+            <Button
+                android:id="@+id/btn_reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset"
+                android:textAllCaps="false"
+                android:translationX="75dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Data"
+                android:onClick="sendData"
+                android:textAllCaps="false"
+                android:translationX="75dp"/>
+
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:translationX="90dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/signup_link"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Don't have an account? Sign up here."
+            android:textColor="@color/blue"
+            android:textStyle="italic"
+            android:clickable="true"
+            android:onClick="openSignUpPage"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Toolbar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_bg"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <!-- Centered LinearLayout for items -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="">
+
+                <!-- Back Icon -->
+                <ImageView
+                    android:id="@+id/icon_back_arrow"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:src="@drawable/icon_back_arrow" />
+
+                <!-- CareWave Text -->
+                <TextView
+                    android:id="@+id/CareWave_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="-10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Pressure"
+                    android:textColor="@color/white"
+                    android:textSize="29sp" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_width="350dp"
+                android:layout_height="220dp"
+                android:layout_marginTop="-200dp"
+                android:background="@null"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="Current Blood Pressure :"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+
+                android:textColorHint="@color/black"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/heart_rate_bg"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="155dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="19dp"
+                    android:src="@drawable/bp1" />
+
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@null"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="120/80mmHg"
+                android:textAlignment="center"
+                android:textColor="#075D8C"
+                android:textColorHint="@color/black"
+                android:textSize="40sp" />
+
+
+        </LinearLayout>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
