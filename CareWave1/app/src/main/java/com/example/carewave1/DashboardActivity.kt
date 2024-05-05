@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
@@ -29,19 +30,19 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, SpO2Activity::class.java)
             startActivity(intent)
         }
-        // Dashboard >>> Pressure Page
-        val buttonPressure=findViewById<Button>(R.id.buttonPressure)
-        buttonPressure.setOnClickListener {
-            val intent = Intent(this, PressureActivity::class.java)
-            startActivity(intent)
-        }
+//        // Dashboard >>> Pressure Page
+//        val buttonPressure=findViewById<Button>(R.id.buttonPressure)
+//        buttonPressure.setOnClickListener {
+//            val intent = Intent(this, PressureActivity::class.java)
+//            startActivity(intent)
+//        }
 
-        // Dashboard >>> Steps Page
-        val buttonSteps=findViewById<Button>(R.id.buttonSteps)
-        buttonSteps.setOnClickListener {
-            val intent = Intent(this, StepsActivity::class.java)
-            startActivity(intent)
-        }
+//        // Dashboard >>> Steps Page
+//        val buttonSteps=findViewById<Button>(R.id.buttonSpO2)
+//        buttonSteps.setOnClickListener {
+//            val intent = Intent(this, StepsActivity::class.java)
+//            startActivity(intent)
+//        }
 
         // Dashboard >> Edit_MedicationPage
         val buttonMedicationReminder =findViewById<Button>(R.id.buttonMedicationReminder)
@@ -55,6 +56,8 @@ class DashboardActivity : AppCompatActivity() {
 
 // Dashboard(nav bar icons) >> Respective Page
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val homeMenuItemId = R.id.navigation_item2
+        bottomNavigationView.setSelectedItemId(homeMenuItemId)
 
 
         bottomNavigationView.setOnItemSelectedListener  { item ->
@@ -85,4 +88,20 @@ class DashboardActivity : AppCompatActivity() {
 
 
     }
+    override fun onResume() {
+        super.onResume()
+
+        // Get reference to your BottomNavigationView
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+
+        // Get the ID of the "Home" menu item
+        val homeMenuItemId = R.id.navigation_item2 // Replace with the ID of your "Home" menu item
+
+        // Check if the "Home" item is not already selected
+        if (bottomNavigationView.selectedItemId != homeMenuItemId) {
+            // Set the "Home" menu item as the selected item
+            bottomNavigationView.selectedItemId = homeMenuItemId
+        }
+    }
+
 }
