@@ -83,13 +83,13 @@
                 android:id="@+id/amRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="am" />
+                android:text="Before meal" />
 
             <RadioButton
                 android:id="@+id/pmRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="pm" />
+                android:text="After meal" />
 
         </RadioGroup>
 
