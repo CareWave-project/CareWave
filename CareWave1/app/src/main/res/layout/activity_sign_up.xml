@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/app_bg"
+
     tools:context=".SignUpActivity">
 
     <LinearLayout
@@ -47,6 +49,14 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="Age"
+            android:inputType="number"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/userContactTextView"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Contact"
             android:inputType="number"
             android:layout_marginTop="16dp"/>
 
