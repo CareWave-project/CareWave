@@ -20,7 +20,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@drawable/toolbar_bg"
+                android:background="@drawable/bottom_button_bg"
                 app:layout_scrollFlags="scroll|enterAlways">
 
                 <!-- Centered LinearLayout for items -->
@@ -32,7 +32,7 @@
                     <!-- Back Icon -->
                     <ImageView
                         android:id="@+id/icon_back_arrow"
-                        android:layout_width="40dp"
+                        android:layout_width="34dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="start"
                         android:layout_marginStart="0dp"

@@ -16,4 +16,17 @@
     <string name="already_registered_sign_in">Already registered, Sign in !</string>
     <string name="login">Login</string>
     <string name="medicines_list">Medicines List</string>
+    <string name="dose">Dose:</string>
+    <string name="heart_rate_buttontext">Heart Rate</string>
+    <string-array name="days_of_week">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+
 </resources>

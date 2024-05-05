@@ -1,119 +1,136 @@
 package com.example.carewave1
 
+import android.Manifest
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.PixelFormat
 import android.location.Location
 import android.location.LocationManager
+import android.net.Uri
 import android.os.Build
+import android.provider.Settings
+import android.telephony.gsm.SmsManager
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.WindowManager
-import android.telephony.SmsManager
+import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.Toast
-import java.util.*
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.google.android.gms.location.*
+import android.os.Looper
 
 
 class AlertManager(private val context: Context) {
 
     private var isAlertShowing = false
     private lateinit var windowManager: WindowManager
-    private lateinit var alertDialog: AlertDialog
+    private lateinit var alert_dialog: AlertDialog
+    private val fusedLocationClient: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
+
+    init {
+        // Initialize WindowManager
+        windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    }
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1001
+    }
 
     fun triggerAlert() {
         if (!isAlertShowing) {
             isAlertShowing = true
 
-            // Create alert dialog to ask user whether it's a false alarm or SOS
+            // Inflate the layout for the alert dialog
+            val inflater = LayoutInflater.from(context)
+            val dialogView = inflater.inflate(R.layout.alert_dialog, null)
+
+            // Find views in the inflated layout
+            val btnFalseAlarm = dialogView.findViewById<Button>(R.id.btnFalseAlarm)
+            val btnSOS = dialogView.findViewById<Button>(R.id.btnSOS)
+
+            // Create AlertDialog with inflated layout
             val alertDialogBuilder = AlertDialog.Builder(context)
-            alertDialogBuilder.setTitle("Alert!")
-            alertDialogBuilder.setMessage("Was this a false alarm or SOS?")
-            alertDialogBuilder.setCancelable(false)
-            alertDialogBuilder.setPositiveButton("False Alarm") { dialogInterface: DialogInterface, _: Int ->
-                // If user responds as false alarm, dismiss the alert
-                dialogInterface.dismiss()
+            alertDialogBuilder.setView(dialogView)
+            alert_dialog = alertDialogBuilder.create()
+
+            // Set click listeners for buttons
+            btnFalseAlarm.setOnClickListener {
                 dismissAlert()
             }
-            alertDialogBuilder.setNegativeButton("SOS") { dialogInterface: DialogInterface, _: Int ->
-                // If user responds as SOS, send emergency alert
-                dialogInterface.dismiss()
+
+            btnSOS.setOnClickListener {
                 sendEmergencyAlert()
                 dismissAlert()
             }
-            alertDialog = alertDialogBuilder.create()
 
-            // Create WindowManager and add the AlertDialog as a system alert window
-            windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            val params: WindowManager.LayoutParams = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowManager.LayoutParams(
-                    WindowManager.LayoutParams.WRAP_CONTENT,
-                    WindowManager.LayoutParams.WRAP_CONTENT,
-                    WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
-                    PixelFormat.TRANSLUCENT
-                )
-            } else {
-                @Suppress("DEPRECATION")
-                WindowManager.LayoutParams(
-                    WindowManager.LayoutParams.WRAP_CONTENT,
-                    WindowManager.LayoutParams.WRAP_CONTENT,
-                    WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
-                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
-                    PixelFormat.TRANSLUCENT
-                )
-            }
+            // Show the AlertDialog
+            alert_dialog.show()
+        }
+    }
 
-            params.gravity = Gravity.CENTER
-            windowManager.addView(alertDialog.window!!.decorView, params)
+    fun sendEmergencyAlert() {
 
-            // Set a timer to automatically dismiss the alert if user doesn't respond within 10 seconds
-            Timer().schedule(object : TimerTask() {
-                override fun run() {
-                    if (isAlertShowing) {
-                        dismissAlert()
-                        sendEmergencyAlert()
-                    }
+        // Check for location permission
+        if (ActivityCompat.checkSelfPermission(
+                context,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // Request location permission if not granted
+            ActivityCompat.requestPermissions(
+                context as Activity,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+            return
+        }
+        // Get last known location
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener(context as Activity) { location ->
+                // Check if location is available
+                if (location != null) {
+                    // Construct the Google Maps URL with latitude and longitude
+                    val latitude = location.latitude
+                    val longitude = location.longitude
+                    val mapsUrl =
+                        "https://www.google.com/maps/search/?api=1&query=$latitude,$longitude"
+
+                    // Send SMS with Google Maps URL
+                    val message = "Emergency SOS! User's current location: $mapsUrl"
+                    val phoneNumber =
+                        "+91 8129076731" // Specify the phone number of the emergency contact
+                    val smsManager = SmsManager.getDefault()
+                    smsManager.sendTextMessage(phoneNumber, null, message, null, null)
+                    Toast.makeText(context, "Emergency alert sent successfully", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Inform the user that the location is not available
+                    Toast.makeText(
+                        context,
+                        "Unable to retrieve user's location",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-            }, 10000)
-        }
-    }
-
-    private fun sendEmergencyAlert() {
-        // Get user's location
-        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val location: Location? = try {
-            locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-        } catch (ex: SecurityException) {
-            null
-        }
-
-        // Send emergency alert with user's location to emergency contacts
-        if (location != null) {
-            val latitude = location.latitude
-            val longitude = location.longitude
-            val message = "Emergency SOS! User's current location: $latitude, $longitude"
-
-            try {
-                // Replace phoneNumber with the actual phone number of the emergency contact
-                val phoneNumber = "8129076731"
-                @Suppress("DEPRECATION")
-                val smsManager = SmsManager.getDefault()
-                smsManager.sendTextMessage(phoneNumber, null, message, null, null)
-                Toast.makeText(context, "Emergency alert sent successfully", Toast.LENGTH_SHORT).show()
-            } catch (e: Exception) {
-                Toast.makeText(context, "Failed to send emergency alert", Toast.LENGTH_SHORT).show()
-                e.printStackTrace()
             }
-        } else {
-            Toast.makeText(context, "Unable to retrieve user's location", Toast.LENGTH_SHORT).show()
         }
+
+
+    fun hasSmsPermission(): Boolean {
+        return ContextCompat.checkSelfPermission(
+            context,
+            Manifest.permission.SEND_SMS
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
-
-    private fun dismissAlert() {
-        // Dismiss the alert dialog and remove it from the window manager
-        alertDialog.dismiss()
-        windowManager.removeView(alertDialog.window!!.decorView)
-        isAlertShowing = false
+    fun dismissAlert() {
+        if (isAlertShowing) {
+            alert_dialog.dismiss()
+            isAlertShowing = false
+        }
     }
 }
+

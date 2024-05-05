@@ -7,6 +7,17 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <!-- Define a custom permission -->
+    <permission
+        android:name="com.example.carewave1.PERMISSION_MEDICATION_REMINDER"
+        android:protectionLevel="normal" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -19,6 +30,25 @@
         android:theme="@style/Theme.CareWave1"
         tools:targetApi="31">
 
+        <receiver android:name=".MedicationReminderReceiver"
+            android:exported="true"
+            android:permission="com.example.carewave1.PERMISSION_MEDICATION_REMINDER">
+            <intent-filter>
+                <action android:name="com.example.carewave1.ACTION_MEDICATION_REMINDER" />
+                <!-- Add other necessary intent filters if required -->
+            </intent-filter>
+        </receiver>
+
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PasswordResetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MedicationReminderReceiver"
+            android:exported="false" />
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
@@ -47,7 +77,8 @@
             android:name=".DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".MainActivity"
+            android:launchMode="singleTop"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
