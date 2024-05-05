@@ -69,14 +69,6 @@
             android:orientation="horizontal"
             android:padding="25dp">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Send Data"
-                android:onClick="sendData"
-                android:textAllCaps="false"
-                android:translationX="1dp"/>
-
             <!-- Reset Button -->
             <Button
                 android:id="@+id/buttonReset"
@@ -84,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:text="Reset"
                 android:textAllCaps="false"
-                android:translationX="5dp"/>
+                android:translationX="75dp"/>
 
             <!-- Submit Button -->
             <Button
@@ -93,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/login"
                 android:textAllCaps="false"
-                android:translationX="9dp"/>
+                android:translationX="79dp"/>
         </LinearLayout>
 
         <TextView
