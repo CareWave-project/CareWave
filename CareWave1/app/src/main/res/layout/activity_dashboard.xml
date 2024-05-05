@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/app_bg"
     tools:context=".MainActivity">
 
-  
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
@@ -18,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/toolbar_bg"
+            android:background="@drawable/bottom_button_bg"
             app:layout_scrollFlags="scroll|enterAlways">
 
             <!-- Centered LinearLayout for items -->
@@ -27,15 +28,15 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
 
-                <!-- Menu Icon -->
+                <!-- CareWave Logo -->
                 <ImageView
-                    android:id="@+id/menu_icon"
-                    android:layout_width="30dp"
+                    android:id="@+id/carewave_logo"
+                    android:layout_width="38dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="start"
-                    android:layout_marginStart="-0dp"
-                    android:layout_marginEnd="0dp"
-                    android:src="@drawable/icon_menu" />
+                    android:layout_marginStart="-44dp"
+                    android:layout_marginEnd="-100dp"
+                    android:src="@drawable/carewave_logo" />
 
                 <!-- CareWave Text -->
                 <TextView
@@ -43,22 +44,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="145dp"
+                    android:layout_marginStart="105dp"
                     android:layout_marginEnd="-10dp"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="serif"
                     android:text="CareWave"
                     android:textColor="@color/white"
-                    android:textSize="23sp" />
+                    android:textSize="25dp" />
 
                 <!-- Notification Icon -->
-                <ImageView
-                    android:id="@+id/notification_icon"
-                    android:layout_width="35dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="80dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/icon_notification" />
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/notification_icon"-->
+                <!--                    android:layout_width="35dp"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_gravity="end"-->
+                <!--                    android:layout_marginStart="80dp"-->
+                <!--                    android:layout_marginEnd="10dp"-->
+                <!--                    android:src="@drawable/icon_notification" />-->
 
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
@@ -71,7 +72,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <!-- First Horizontal LinearLayout for the first set of buttons -->
+        <!-- First Horizontal LinearLayout for the first set of buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,20 +97,10 @@
                 android:gravity="center"
                 android:text="Heart Rate"
                 android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                tools:ignore="Deprecated" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonSpO2"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_margin="25dp"
-                android:layout_weight=".5"
-                android:background="@drawable/top_button_bg"
-                android:drawablePadding="1dp"
-                android:gravity="center"
-                android:text="@string/spo2"
-                android:textColor="@color/white"
-                android:textSize="22sp"/>
+
 
 
 
@@ -117,7 +108,7 @@
         </LinearLayout>
 
 
-    <!-- Second Horizontal LinearLayout for the second set of buttons -->
+        <!-- Second Horizontal LinearLayout for the second set of buttons -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,9 +117,9 @@
             android:layout_marginEnd="10dp"
             android:orientation="horizontal">
 
-            <!-- Third Button -->
+            <!-- 2nd Button -->
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonSteps"
+                android:id="@+id/buttonSpO2"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_margin="25dp"
@@ -138,24 +129,11 @@
 
                 android:drawablePadding="8dp"
                 android:gravity="center"
-                android:text="Steps"
+                android:text="SpO2"
                 android:textColor="@color/white"
                 android:textSize="22sp"/>
 
-            <!-- Fourth Button -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonPressure"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_margin="17dp"
-                android:layout_weight=".5"
-                android:background="@drawable/top_button_bg"
 
-                android:drawablePadding="8dp"
-                android:gravity="center"
-                android:text="Pressure"
-                android:textColor="@color/white"
-                android:textSize="21sp"/>
         </LinearLayout>
         <!-- Third Horizontal LinearLayout for the second set of buttons -->
         <LinearLayout
@@ -166,19 +144,19 @@
             android:orientation="horizontal">
 
             <!-- Fifth Button -->
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonMedicationReminder"
                 android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_margin="25dp"
+                android:layout_height="140sp"
+                android:layout_margin="25sp"
                 android:layout_weight=".5"
                 android:background="@drawable/top_button_bg"
 
                 android:drawablePadding="8dp"
                 android:gravity="center"
                 android:text="Medication Reminder"
-                android:textColor="@color/white"
-                android:textSize="22dp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"/>
 
 
         </LinearLayout>
