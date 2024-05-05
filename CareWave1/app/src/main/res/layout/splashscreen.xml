@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/ll_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="25dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="152dp"
+            android:layout_height="167dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-200sp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/carewave_logo" />
+        <!-- App Name -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="serif"
+            android:text="CareWave"
+            android:textColor="#B961C8"
+            android:textSize="55sp" />
+
+
+
+    </LinearLayout>
+
+    <!-- Add your splash screen content here -->
+
+</RelativeLayout>
