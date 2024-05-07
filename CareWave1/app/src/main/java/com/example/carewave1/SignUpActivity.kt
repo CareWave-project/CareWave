@@ -15,7 +15,9 @@ class SignUpActivity : AppCompatActivity() {
     data class UserData(
         val name: String = "",
         val age: String = "",
-        val contact: String=""
+        val contact: String="",
+        val caregiverName: String="",
+        val caregiverContact: String=""
     )
 
 
@@ -43,15 +45,17 @@ class SignUpActivity : AppCompatActivity() {
             val name = binding.userNameS.text.toString() // New: Get user's name
             val age = binding.age.text.toString()   // New: Get user's age
             val contact = binding.userContactTextView.text.toString() // New: Get user's contact
+            val caregiverName = binding.caregiverNameTextView.text.toString() // New: Get caregiver's contact
+            val caregiverContact = binding.caregiverContactTextView.text.toString() // New: Get caregiver's contact
 
-            if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty() && name.isNotEmpty() && age.isNotEmpty() && contact.isNotEmpty() ){
+            if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty() && name.isNotEmpty() && age.isNotEmpty() && contact.isNotEmpty() && caregiverContact.isNotEmpty() && caregiverName.isNotEmpty() ){
                 if (pass == confirmPass){
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(){
                         if(it.isSuccessful){
                             val user = firebaseAuth.currentUser
                             val userId = user?.uid
                             val userRef = database.getReference("users").child(userId ?: "")
-                            userRef.setValue(UserData(name, age,contact)) // New: Store user data in Firebase Realtime Database
+                            userRef.setValue(UserData(name, age,contact,caregiverName,caregiverContact)) // New: Store user data in Firebase Realtime Database
                             val intent= Intent(this,LoginActivity::class.java)
                             startActivity(intent)
                             finish()
